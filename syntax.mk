@@ -53,5 +53,5 @@ lint-cc:
 ifneq (,$(findstring .$(CXX_EXT),$(CXX_CHK_SOURCES)))
 	@echo LINT $(notdir $(CXX_CHK_SOURCES))
 	#$(Q)$(CXX_LINT) $(INCLUDES) $(CXX_CHK_SOURCES)
-	$(Q)$(CXX_LINT) --filter=-whitespace/braces $(CXX_CHK_SOURCES)
+	$(Q)$(CXX_LINT) --filter=-whitespace/braces,-whitespace/newline $(CXX_CHK_SOURCES)
 endif
