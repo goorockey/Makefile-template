@@ -8,7 +8,7 @@ AVR_MCU_SHORT ?= x128a1
 # Some useful flags for microcontroller development
 AVR_BOTHFLAGS ?= -fshort-enums -funsigned-char -funsigned-bitfields -DF_CPU=32000000UL -mmcu=$(AVR_MCU) -O0
 AVR_CFLAGS ?= -std=gnu99
-AVR_CXXFLAGS ?= -fno-exceptions -std=gnu++11
+AVR_CXXFLAGS ?= -fno-exceptions -std=gnu++0x
 
 # New targets.
 AVRPROJ ?= $(PROJ:%=%.elf)

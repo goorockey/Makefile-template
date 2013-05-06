@@ -36,9 +36,9 @@ endif
 lint: lint-c lint-cc
 
 # TODO: add sparse/cgcc support
-C_LINT ?= $(shell if [ `which splint` ]; then echo splint; fi;)
-GOOGLE_CPPLINT ?= $(shell if [ `which cpplint.py` ]; then echo cpplint.py; elif [ `which cpplint` ]; then echo cpplint; fi;)
-CPPCHECK ?= $(shell if [ `which cppcheck` ]; then echo cppcheck; fi;)
+C_LINT ?= $(shell if [ `which splint 2>/dev/null` ]; then echo splint; fi;)
+GOOGLE_CPPLINT ?= $(shell if [ `which cpplint.py 2>/dev/null` ]; then echo cpplint.py; elif [ `which cpplint 2>/dev/null` ]; then echo cpplint; fi;)
+CPPCHECK ?= $(shell if [ `which cppcheck 2>/dev/null` ]; then echo cppcheck; fi;)
 CXX_LINT ?= $(GOOGLE_CPPLINT) $(CPPCHECK)
 
 SPLINT_FLAGS ?= +posixlib -warnposix
@@ -52,5 +52,6 @@ endif
 lint-cc:
 ifneq (,$(findstring .$(CXX_EXT),$(CXX_CHK_SOURCES)))
 	@echo LINT $(notdir $(CXX_CHK_SOURCES))
-	$(Q)$(CXX_LINT) $(INCLUDES) $(CXX_CHK_SOURCES)
+	#$(Q)$(CXX_LINT) $(INCLUDES) $(CXX_CHK_SOURCES)
+	$(Q)$(CXX_LINT) --filter=-whitespace/braces $(CXX_CHK_SOURCES)
 endif

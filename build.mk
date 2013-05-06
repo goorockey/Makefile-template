@@ -8,7 +8,7 @@ WARNFLAGS ?= -Wall -Wextra -std=gnu99 -Wimplicit \
 
 # And for C++:
 # http://stackoverflow.com/questions/399850/best-compiler-warning-level-for-c-c-compilers
-CXXWARNFLAGS ?= -Wall -Weffc++ -std=gnu++11 -pedantic  \
+CXXWARNFLAGS ?= -Wall -Weffc++ -std=gnu++0x -pedantic  \
     -Wextra  -Waggregate-return -Wcast-align \
     -Wcast-qual  -Wchar-subscripts  -Wcomment -Wconversion \
     -Wdisabled-optimization -Wfloat-equal  -Wformat  -Wformat=2 \
@@ -28,8 +28,8 @@ CXXWARNFLAGS ?= -Wall -Weffc++ -std=gnu++11 -pedantic  \
     -Wvolatile-register-var  -Wwrite-strings
 
 ifndef NO_WERROR
-WARNFLAGS += -Werror -pedantic-errors
-CXXWARNFLAGS += -Werror -pedantic-errors
+WARNFLAGS += -pedantic-errors
+CXXWARNFLAGS += -pedantic-errors
 endif
 
 INCLUDES = $(INCLUDENAMES:%=-I%) $(OTHERINCLUDE)
