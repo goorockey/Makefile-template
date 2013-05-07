@@ -17,6 +17,8 @@ PROJ =
 # What C or C++ files must we compile to make the executable?
 SRC ?= 
 
+SRC_DIR ?=
+
 # What additional headers are needed as dependencies?
 HDR ?= 
 

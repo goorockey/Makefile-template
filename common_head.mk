@@ -10,6 +10,10 @@ UNAME_OS=$(shell uname -s)
 # lots of people use .cpp instead.
 CXX_EXT ?= cc
 
+SRC += $(wildcard $(addsuffix /*.c,$(SRC_DIR))) \
+	   $(wildcard $(addsuffix /*.cpp,$(SRC_DIR))) \
+	   $(wildcard $(addsuffix /*.h,$(SRC_DIR)))
+
 C_SRC = $(filter %.c,$(SRC))
 CXX_SRC = $(filter %.$(CXX_EXT),$(SRC))
 
